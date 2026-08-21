@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+
+Sitemap: https://mad12344231x-cloud.github.io/shopping-style-mart/sitemap.xml
