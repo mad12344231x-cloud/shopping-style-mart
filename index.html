@@ -108,6 +108,7 @@
       background-color: #f8f9fa;
       padding: 10px;
       border-radius: 5px;
+      flex-wrap: wrap;
     }
     .media-btn {
       padding: 8px 16px;
@@ -218,13 +219,19 @@
     <div class="product-container">
       <!-- Media Tabs -->
       <div class="media-tabs">
-        <button class="media-btn active" onclick="showMedia('image')">📸 Photo</button>
+        <button class="media-btn active" onclick="showMedia('image1')">📸 Photo 1</button>
+        <button class="media-btn" onclick="showMedia('image2')">📸 Photo 2</button>
         <button class="media-btn" onclick="showMedia('video')">🎥 Video</button>
       </div>
 
-      <!-- Image Gallery -->
-      <div class="gallery" id="image-media">
+      <!-- Image Gallery 1 -->
+      <div class="gallery" id="image1-media">
         <img src="1786970932940.jpg" alt="Premium Men's Leather Wallet">
+      </div>
+
+      <!-- Image Gallery 2 -->
+      <div class="gallery" id="image2-media" style="display: none;">
+        <img src="1786970933613.jpg" alt="Premium Men's Leather Wallet - View 2">
       </div>
 
       <!-- Video Gallery -->
@@ -292,20 +299,28 @@
   <!-- Media Toggle Script -->
   <script>
     function showMedia(type) {
-      const imageMedia = document.getElementById('image-media');
+      const image1Media = document.getElementById('image1-media');
+      const image2Media = document.getElementById('image2-media');
       const videoMedia = document.getElementById('video-media');
       const buttons = document.querySelectorAll('.media-btn');
 
       buttons.forEach(btn => btn.classList.remove('active'));
 
-      if (type === 'image') {
-        imageMedia.style.display = 'flex';
+      if (type === 'image1') {
+        image1Media.style.display = 'flex';
+        image2Media.style.display = 'none';
         videoMedia.style.display = 'none';
         buttons[0].classList.add('active');
-      } else if (type === 'video') {
-        imageMedia.style.display = 'none';
-        videoMedia.style.display = 'flex';
+      } else if (type === 'image2') {
+        image1Media.style.display = 'none';
+        image2Media.style.display = 'flex';
+        videoMedia.style.display = 'none';
         buttons[1].classList.add('active');
+      } else if (type === 'video') {
+        image1Media.style.display = 'none';
+        image2Media.style.display = 'none';
+        videoMedia.style.display = 'flex';
+        buttons[2].classList.add('active');
       }
     }
   </script>
